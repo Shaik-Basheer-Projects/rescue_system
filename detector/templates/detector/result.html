@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detection Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .box {
+            width: 48%;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .table-container {
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            margin-bottom: 5px;
+        }
+        .back-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .back-button a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Detection Results</h1>
+    <div class="container">
+        <div class="box">
+            <h2>YOLOv8 Detection</h2>
+            <img src="/{{ image_v8 }}" alt="YOLOv8 Output">
+            <div class="table-container">
+                {{ df_v8|safe }}
+            </div>
+        </div>
+        <div class="box">
+            <h2>YOLOv9 Detection</h2>
+            <img src="/{{ image_v9 }}" alt="YOLOv9 Output">
+            <div class="table-container">
+                {{ df_v9|safe }}
+            </div>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="{% url 'upload' %}">← Back to Upload</a>
+    </div>
+</body>
+</html>
